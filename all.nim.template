@@ -28,7 +28,7 @@ const
   COLOR_CYAN: string = "\e[36m"
 
   TIME_COL_WIDTH: int = 10
-  RES_COL_WIDTH: int = 16
+  RES_COL_WIDTH: int = 24
 
 # Import each problem
 {{ PROBLEM IMPORT }}
@@ -81,7 +81,7 @@ proc echoResult(id: int): void =
 
   var row: string = V_BAR
   row &= ($id).align(4) & V_BAR
-  row &= COLOR_CYAN & res.align(RES_COL_WIDTH) & COLOR_RESET & V_BAR
+  row &= COLOR_CYAN & res.alignLeft(RES_COL_WIDTH) & COLOR_RESET & V_BAR
 
   var color = COLOR_GREEN
   if span >= 1_000_000_000'i64:
@@ -89,7 +89,7 @@ proc echoResult(id: int): void =
   elif span >= 100_000_000'i64:
     color = COLOR_YELLOW
 
-  row &= color & span.toHumanTime.align(TIME_COL_WIDTH) & COLOR_RESET & V_BAR
+  row &= color & span.toHumanTime.center(TIME_COL_WIDTH) & COLOR_RESET & V_BAR
 
   echo row
 
