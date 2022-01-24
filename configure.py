@@ -11,7 +11,7 @@ def writeline(f: TextIOWrapper, msg: str = ""):
 regex = re.compile(r"^p\d{3}\.nim$")
 solvers = sorted(list(filter(regex.match, listdir("solvers"))))
 
-with open("all.template") as f:
+with open("all.nim.template") as f:
   template = f.read().strip().split("\n")
 
 with open("all.nim", "w") as f:
