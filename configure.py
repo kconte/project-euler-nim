@@ -11,12 +11,12 @@ def writeline(f: TextIOWrapper, msg: str = ""):
 regex = re.compile(r"^p\d{3}\.nim$")
 solvers = sorted(list(filter(regex.match, listdir("solvers"))))
 
-with open("all.nim.template") as f:
+with open("all_template.nim") as f:
   template = f.read().strip().split("\n")
 
 with open("all.nim", "w") as f:
   for line in template:
-    if line != "{{ PROBLEM IMPORT }}":
+    if line != "# PROBLEM IMPORT":
       writeline(f, line)
     else:
       for solver in solvers:
