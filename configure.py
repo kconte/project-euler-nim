@@ -16,7 +16,7 @@ with open("all.template") as f:
 
 with open("all.nim", "w") as f:
   for line in template:
-    if line != "{{ PROBLEM_IMPORT }}":
+    if line != "{{ PROBLEM IMPORT }}":
       writeline(f, line)
     else:
       for solver in solvers:
