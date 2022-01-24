@@ -1,4 +1,3 @@
-import ../lib/globals
 import ../lib/templates
 
 euler 1:
