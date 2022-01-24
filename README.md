@@ -10,7 +10,7 @@
 
 
 ## Usage
-### Using `configure.py` (recommeded):
+### Using `configure.py` (recommended):
 
 ```sh
 python3 configure.py
