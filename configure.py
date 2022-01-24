@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from io import TextIOWrapper
+from pathlib import Path
 from os import listdir
 import re
 
@@ -10,7 +11,6 @@ def writeline(f: TextIOWrapper, msg: str = ""):
 regex = re.compile(r"^p\d{3}\.nim$")
 solvers = sorted(list(filter(regex.match, listdir("solvers"))))
 
-print("Creating all.nim . . .")
 with open("all.template") as f:
   template = f.read().strip().split("\n")
 
@@ -23,9 +23,7 @@ with open("all.nim", "w") as f:
         solver = solver.replace(".nim", "")
         writeline(f, f"import ./solvers/{solver}")
 
-print("Done.")
 
-print("Creating Makefile . . .")
 with open("Makefile", "w") as f:
   writeline(f, "NIM_CFLAGS = -d:release --warning:UnusedImport:off")
   writeline(f)
@@ -50,4 +48,4 @@ with open("Makefile", "w") as f:
 
   pass
 
-print("Done.")
+Path("./bin").mkdir(exist_ok = True)
