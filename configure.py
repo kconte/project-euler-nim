@@ -25,7 +25,7 @@ with open("all.nim", "w") as f:
 
 
 with open("Makefile", "w") as f:
-  writeline(f, "NIM_CFLAGS = -d:release --warning:UnusedImport:off")
+  writeline(f, "NIM_CFLAGS = -d:release --warning:UnusedImport:off --hint:DuplicateModuleImport:off")
   writeline(f)
 
   writeline(f, "all: bin/all")
