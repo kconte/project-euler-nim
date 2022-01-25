@@ -17,6 +17,16 @@ func isqrt(val: SomeInteger): SomeInteger =
 
   l
 
+func isPrime*(val: SomeInteger): bool =
+  if val < 2: return false
+  elif val == 2: return true
+  elif val mod 2 == 0: return false
+
+  for i in countup(3, val.isqrt, 2):
+    if val mod i == 0:
+      return false
+  return true
+
 func primeSieve*(limit: SomeInteger): seq[SomeInteger] =
   var isPrime: seq[bool] = newSeq[bool](limit + 1)
   isPrime.fill(true)
